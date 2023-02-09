@@ -1,0 +1,6 @@
+pandas
+streamlit_option_menu
+numpy
+plotly
+plotly.express
+requests
