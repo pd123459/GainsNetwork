@@ -25,25 +25,14 @@ st.markdown(
     """
         # Overview 
         
-        This dashboard analyses ...
+        L2’s high speed and low gas provide an excellent venue for on-chain derivatives trading, and now L2 has become the main battlefield for trading derivatives.
         
-        Background paragraph: (why on-chain derivatives platform)
-        参考"foreword" - https://foresightnews.pro/article/detail/17593
+        This dashboard analyses the decentralized derivative trading platform Gains Network, the impact of its Arbitrum launch,
+        and comparisons between Gains Network and its competitors.         
         
-        #### **Key takeaways:**
-        
-        1. 
-        
-        2.  
-        
-        3. 
         
 """)
-st.markdown(
-    f'####  GNS Token Price{gap}{gap}[{icons.setting_icon}](https://app.flipsidecrypto.com/velocity/queries/860f8493-6bad-45a6-98b0-d76d587dc1c3)', unsafe_allow_html=True
-)
-st.write("""*The price of the $GNS token. Currency in USD.*""")
-st.plotly_chart(f.fig_hist_prc, use_container_width=True)
+
 
 
 st.markdown(
@@ -52,7 +41,7 @@ st.markdown(
     ---
     # Methodology 
     
-    Data is drawn from [Flipside Crypto](https://flipsidecrypto.xyz/)'s Solana tables. 
+    Data is drawn from [Flipside Crypto](https://flipsidecrypto.xyz/). 
     
     """
     f'For Flipside data, links to the underlying queries are provided in the wrench icon ({icons.setting_icon})'
@@ -66,88 +55,59 @@ st.markdown(
 )
 
 st.markdown(
-    """
+    f"""
     ---
     # Gains Network User Key Statistics
-
-    1.1 daily trade vol (by Type: crypto; forex; stock, etc)
-        --> add cum vol month & 3 month
-        --> may be due to trading comp https://twitter.com/GainsNetwork_io/status/1616468328956022784
-        
-    1.2 daily traders 
-        --> add cum traders month & 3 month
-        
-    2.1 daily fees （可以偷个懒，按上面的type）
     
-    2.2 OI (by Type)
-    
-    ---
-    # Gains Network Liquidity Provider Key Statistics
-    
-    1. TVL (gDAI) [Poly vs. arbitrum]
-    
-    2. APR (gDAI) [Poly vs. arbitrum]
-    
-    3. Collat Ratio (gDAI) [Poly vs. arbitrum]
+    With the Arbitrum launch, Gains Network experienced a surge in trading activities, and exceeded daily 
+    post leverage trading volume of $200mil. The recent [trading competition](https://twitter.com/GainsNetwork_io/status/1616468328956022784)
+    on Gains Arbitrum chain could also be a potential driver of the increase in trading activities. 
     
     
     """
+    , unsafe_allow_html=True
 )
 
-'''
-st.markdown(f'#### Daily Active Whirlpools [{icons.setting_icon}](https://app.flipsidecrypto.com/velocity/queries/860f8493-6bad-45a6-98b0-d76d587dc1c3)', unsafe_allow_html=True)
+
+st.markdown(f'#### Daily Trading Volume on Gains Network [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
 st.write(
-    """*The number of Orca Whirlpools that have active transactions per day.* """)
-st.plotly_chart(f.fig_pool_count, use_container_width=True)
+    """*Total derivative trading volume on the Gains Network per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gains_vol, use_container_width=True)
 
-st.markdown(
-    """
-    
-    
-    """
-)
-'''
+st.markdown(f'#### Daily Unique Users on Gains Network [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
+st.write(
+    """*Total number of unique users who traded on the Gains Network per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gains_user, use_container_width=True)
+
+st.markdown(f'#### Daily Number of trades on Gains Network [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
+st.write(
+    """*Total number of trades that use the Gains Network per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gains_trx, use_container_width=True)
+
 
 st.markdown(
     """
     ---
     # Competitor Key Statistics
-        same as above "User Key statistics"
-        
-    GMX (Arbitrum)
-    
-    
-    Metavault.trade (Poly)
-    
-    
-    
-    Mycelium Perpetual Swaps (Arbitrum)
-    
     
     """
 )
 
+st.markdown(f'#### Daily Trading Volume on GMX [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
+st.write(
+    """*Total derivative trading volume on GMX per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gmx_vol, use_container_width=True)
 
-st.markdown(
-    """
-    ---
-    # A Comparison of Daily Users
-    
-    ---
-    # A Comparison of Transaction Volume
-    
-    ---
-    # A Comparison of Transaction Fees 
-    
-    
-    - Overview (TBD - add to description and analysis)
-        1. Chain
-        2. Assets --> crypto; forex; stocks
-        3. Highest leverage
-        4. Functionalities - stop-loss
-        
-    """
-)
+st.markdown(f'#### Daily Unique Users on GMX [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
+st.write(
+    """*Total number of unique users who traded on GMX per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gmx_user, use_container_width=True)
+
+st.markdown(f'#### Daily Number of trades on Gains Network [{icons.setting_icon}](https://next.flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005/visualizations/0d283bac-2601-469f-ad93-705e0dfefbc2)', unsafe_allow_html=True)
+st.write(
+    """*Total number of trades that use the GMX per day. Split by chain used.* """)
+st.plotly_chart(f.fig_gmx_trx, use_container_width=True)
+
 
 st.markdown(
     """
@@ -157,9 +117,9 @@ st.markdown(
 
     This dashboard is designed by [@Phi_Deltalytics](https://twitter.com/phi_deltalytics). 
     I hope it serves as a valuable tool for both newcomers and experienced users 
-    to gain insights into the Orca Whirlpools. 
+    to gain insights into the Gains Network and other derivative trading platforms on Arbitrum. 
     
-    For page source, see [Github](https://github.com/pd123459/Orca-Whirlpools).
+    For page source, see [Github](https://github.com/pd123459/GainsNetwork).
     
     
     Any comments and suggestions are welcomed. 
