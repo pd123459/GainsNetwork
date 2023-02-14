@@ -115,6 +115,8 @@ df_gains_ttl['AVG_LEVERAGE'] = df_gains_ttl['TOTAL_VOLUME']/ df_gains_ttl['TOTAL
 df_gains_ttl['AVG_LEVERAGE_MA'] = df_gains_ttl['AVG_LEVERAGE'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
 df_gains_ttl['AVG_TRADE_SIZE_MA'] = df_gains_ttl['AVG_TRADE_SIZE'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
 df_gains_ttl['AVG_NUM_TRADES_MA'] = df_gains_ttl['AVG_NUM_TRADES'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
+df_gains_ttl['AVG_USER_VOL'] = df_gains_ttl['TOTAL_VOLUME'] / df_gains_ttl['USERS_COUNT']
+df_gains_ttl['AVG_USER_VOL_MA'] = df_gains_ttl['AVG_USER_VOL'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
 
 df_gains_chain_index = df_gains.index[df_gains['DATE'] == '2023-01-01'].tolist()
 df_gains_chain_initial = df_gains
@@ -174,6 +176,8 @@ df_gmx_ttl['USERS_COUNT_MA'] = df_gmx_ttl['USERS_COUNT'][::1].rolling(7).mean()[
 df_gmx_ttl['AVG_NUM_TRADES'] = df_gmx_ttl['TX_COUNT'] / df_gmx_ttl['USERS_COUNT']
 df_gmx_ttl['AVG_TRADE_SIZE'] = df_gmx_ttl['TOTAL_VOLUME'] / df_gmx_ttl['TX_COUNT']
 df_gmx_ttl['AVG_TRADE_SIZE_MA'] = df_gmx_ttl['AVG_TRADE_SIZE'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
+df_gmx_ttl['AVG_USER_VOL'] = df_gmx_ttl['TOTAL_VOLUME'] / df_gmx_ttl['USERS_COUNT']
+df_gmx_ttl['AVG_USER_VOL_MA'] = df_gmx_ttl['AVG_USER_VOL'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
 df_gmx_ttl['AVG_NUM_TRADES_MA'] = df_gmx_ttl['AVG_NUM_TRADES'][::1].rolling(7).mean()[::1].replace(np.nan, 'None')
 
 
@@ -362,24 +366,24 @@ chart_update_legend(fig_comp_trades, ['Gains (7-Day MA)', 'GMX (7-Day MA)'])
 chart_update_layout(fig_comp_trades, "", "Number of Trades")
 
 fig_comp_avgsize = px.area(x=df_gains_ttl['DATE'],y=[df_gains_ttl['AVG_TRADE_SIZE_MA'],df_gmx_ttl['AVG_TRADE_SIZE_MA']]
-                       , color_discrete_sequence = ['Gold','LightGreen']).update_layout(title = 'Average Position Size Comparison')
-chart_update_legend(fig_comp_avgsize, ['Gains (7-Day MA)', 'GMX (7-Day MA)'])
+                       , color_discrete_sequence = ['LightGreen', 'Gold']).update_layout(title = 'Average Position Size Comparison')
+chart_update_legend(fig_comp_avgsize, ['GMX (7-Day MA)', 'Gains (7-Day MA)'])
 chart_update_layout(fig_comp_avgsize, "", "Average Position Size")
 
 fig_comp_numtrades = px.area(x=df_gains_ttl['DATE'],y=[df_gains_ttl['AVG_NUM_TRADES_MA'],df_gmx_ttl['AVG_NUM_TRADES_MA']]
-                       , color_discrete_sequence = ['Gold','LightGreen']).update_layout(title = 'Daily Trades per User Comparison')
-chart_update_legend(fig_comp_numtrades, ['Gains (7-Day MA)', 'GMX (7-Day MA)'])
+                       , color_discrete_sequence = ['LightGreen', 'Gold']).update_layout(title = 'Daily Trades per User Comparison')
+chart_update_legend(fig_comp_numtrades, ['GMX (7-Day MA)', 'Gains (7-Day MA)'])
 chart_update_layout(fig_comp_numtrades, "", "Daily Trades / User")
 
 
 # Plots (Gains Arbitrun vs. GMX Arbitrum)
 
 fig_comp_arbitrum_avgsize = px.area(x=df_gains_arbitrum['DATE'],y=[df_gains_arbitrum['AVG_TRADE_SIZE_MA'],df_gmx_arbitrum_perp['AVG_TRADE_SIZE_MA']]
-                       , color_discrete_sequence = ['LightSalmon','PaleTurquoise']).update_layout(title = 'Average Position Size Comparison')
-chart_update_legend(fig_comp_arbitrum_avgsize, ['Gains Arbitrum (7-Day MA)', 'GMX Arbitrum (7-Day MA)'])
+                       , color_discrete_sequence = ['PaleTurquoise','LightSalmon']).update_layout(title = 'Arbitrum Perpetual Trading: Average Position Size Comparison')
+chart_update_legend(fig_comp_arbitrum_avgsize, ['GMX Arbitrum Perpetual(7-Day MA)','Gains Arbitrum (7-Day MA)'])
 chart_update_layout(fig_comp_arbitrum_avgsize, "", "Average Position Size")
 
 fig_comp_arbitrum_numtrades = px.area(x=df_gains_arbitrum['DATE'],y=[df_gains_arbitrum['AVG_NUM_TRADES_MA'],df_gmx_arbitrum_perp['AVG_NUM_TRADES_MA']]
-                       , color_discrete_sequence = ['LightSalmon','PaleTurquoise']).update_layout(title = 'Daily Trades per User Comparison')
-chart_update_legend(fig_comp_arbitrum_numtrades, ['Gains Arbitrum (7-Day MA)', 'GMX Arbitrum (7-Day MA)'])
+                       , color_discrete_sequence = ['PaleTurquoise','LightSalmon']).update_layout(title = 'Arbitrum Perpetual Trading: Daily Trades per User Comparison')
+chart_update_legend(fig_comp_arbitrum_numtrades, ['GMX Arbitrum (7-Day MA)', 'Gains Arbitrum (7-Day MA)'])
 chart_update_layout(fig_comp_arbitrum_numtrades, "", "Daily Trades / User")

@@ -25,18 +25,22 @@ st.markdown(
     """
         # Overview 
         
-        This dashboard analyses the decentralized derivative trading platform Gains Network, the impact of its Arbitrum launch,
-        and comparisons between Gains Network and its largest competitor GMX.  
-        
-        L2’s high speed and low gas provide an excellent venue for on-chain derivatives trading, and now L2 has become the main battlefield for trading derivatives.
+        This dashboard analyses trading activities on gTrade, the impact of its recent Arbitrum deployment 
+        and comparisons between Gains Network and its largest competitor GMX.
+        Gains Network develops gTrade, a liquidity-efficient, powerful, and user-friendly decentralized leveraged trading platform.
+        The platform uses an uniquely designed synthetic architecture that targets low trading fees, and a wide range of leverages and pairs
+        : up to 150x on cryptos, 1000x on forex, 100x on stocks, and 35x on indices. [More](https://gains-network.gitbook.io/docs-home/gtrade-leveraged-trading/overview)
+
         
         Key takeaways:
         
-        1. Recent growth for the gains network is contributed by its deployment on Arbitrum on December 31, 2022. Since the launch, the trading activities on Gains Arbitrum soon outran its activities on Polygon, contributed by L2's high speed and low gas fees. 
+        1. Recent growth for the gains network is contributed by its deployment on Arbitrum on December 31, 2022. Since the launch, the trading activities on gTrade Arbitrum soon outran its activities on Polygon, contributed by L2's high speed and low gas fees. 
         
-        2. Traders on the Gains network tend to take positions with larger size and higher leverages on Arbitrum compared to Polygon. 
+        2. gTrade traders tend to take larger position sizes and higher leverages on Arbitrum compared to Polygon. 
         
-        3. Compared to its competitor GMX, Gains network remains a small derivative trading platform. However, the gap between trading volume is not as big as the gap between number of traders. With lower trading fees and more functionalities on Gains platform, it could potentially attract more institutional traders in the future.  
+        3. While the total trading volume on gTrade is smaller than that on GMX, the volume gap between the two platforms is shrinking. With the trading fee on gTrade (0.08% for crypto) lower than that on GMX (0.1% for crypto), and benefits from Layer2 trading now enabled, gTrade could potentially rival with GMX in the near future. 
+        
+        4. gTrade is a more institutional focused platform compared to GMX.
         
 """)
 
@@ -93,39 +97,41 @@ st.markdown(
 st.markdown(
     f"""
     ---
-    # Gains Network User Key Statistics
+    # gTrade User Key Statistics
     
-    With the Arbitrum launch, Gains Network experienced a surge in trading activities, and exceeded daily 
-    post leverage trading volume of $200mil. The recent [trading competition](https://twitter.com/GainsNetwork_io/status/1616468328956022784)
-    on Gains Arbitrum chain could also be a potential driver of the increase in trading activities. 
-    
+    With the Arbitrum deployment on December 31st, 2022, Gains Network has experienced a surge in trading activities, and the price
+    of its native token GNS increased from 3.06USD on January 1st to more than 7USD in February. Faster speed and lower fee, along 
+    with a [trading competition](https://twitter.com/GainsNetwork_io/status/1616468328956022784), attracted traders into the
+    gTrade platform, and pushed the 7-day average of daily trading volume on the platform above 150 million (USD), an 650% increase from
+    its low of 20 million (USD) in late December 2022. Daily number of traders on the platform also increased from below 300 in late December
+    to more than 800 in January. 
     
     """
     , unsafe_allow_html=True
 )
 
 
-st.markdown(f'#### Total Trading Volume on Gains Network [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
+st.markdown(f'#### Total Trading Volume on gTrade [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*Total derivative trading volume on the Gains Network per day, per month and per 3 months.* """)
+    """*Total derivative trading volume on gTrade per day, per month and per 3 months.* """)
 
 a1, a2 = st.columns((1,1))
 a1.plotly_chart(f.fig_gains_vol_daily, use_container_width=True)
 a2.plotly_chart(f.fig_gains_vol_monthly, use_container_width=True)
 
 
-st.markdown(f'#### Total Traders on Gains Network [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
+st.markdown(f'#### Total Traders on gTrade [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*Total number of unique users who traded on the Gains Network per day, per month and per 3 months.* """)
+    """*Total number of unique users who traded on gTrade per day, per month and per 3 months.* """)
 
 b1, b2 = st.columns((1,1))
 b1.plotly_chart(f.fig_gains_user_daily, use_container_width=True)
 b2.plotly_chart(f.fig_gains_user_monthly, use_container_width=True)
 
 
-st.markdown(f'#### Total Trading Fees on Gains Network [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
+st.markdown(f'#### Total Trading Fees on gTrade [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*Total fees collected on the Gains Network per day/month/3 months due to trading activities.* """)
+    """*Total fees collected on gTrade per day/month/3 months due to trading activities.* """)
 
 c1, c2 = st.columns((1,1))
 c1.plotly_chart(f.fig_gains_fee_daily, use_container_width=True)
@@ -134,17 +140,25 @@ c2.plotly_chart(f.fig_gains_fee_monthly, use_container_width=True)
 st.markdown(
     f"""
     ---
-    # Gains Network Detailed Statistics 
+    # gTrade Detailed Statistics 
     
     This section shows the detailed statistics for user activities on the Gains network. The metrics for activities on Polygon and Arbitrum 
-    are also shown separately to identify the difference in user behaviors on both chains. With the short history of Gains network on
-    Arbitrum, the metrics for Polygon vs. Arbitrum activites only use 2023 data. 
+    are also shown separately to identify the difference in user behaviors on both chains. With the short history of gTrade on
+    Arbitrum, the metrics for Polygon vs. Arbitrum activities only use 2023 data.
+    
+    Since the Arbitrum deployment, total trading volume on gTrade Arbitrum soon exceeds that on gTrade Polygon.
+    In late January, the 7-day average of daily trading volume on Arbitrum hovers around 100 million (USD), while that of Polygon 
+    is only around 50 million (USD). 
+    
+    Interestingly, traders on Arbitrum take much larger positions compared to traders on Polygon. On average, an Arbitrum trade ranges
+    from 50-100k (USD), while a Polygon trade ranges from 20-25k (USD). Arbitrum traders also tend to take higher leverages compared to Polygon 
+    traders. These could potentially indicate more institutional trading on Arbitrum. 
     
     """, unsafe_allow_html=True)
 
 st.markdown(f'#### Average Position Size [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*The average position size per trade on the Gains Network per day. With high levels of leverage used on both exchanges,
+    """*The average position size per trade on gTrade per day. With high levels of leverage used on both exchanges,
     position size uses the post leverage trading position.* """)
 
 st.plotly_chart(f.fig_gains_avg_size, use_container_width=True)
@@ -154,7 +168,7 @@ h2.plotly_chart(f.fig_arbitrum_avg_size, use_container_width=True)
 
 st.markdown(f'#### Leverage & Daily Number of Trades  [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*The average leverage used per trade and the average number of trades executed per user per day on the Gains network.* """)
+    """*The average leverage used per trade and the average number of trades executed per user per day on gTrade.* """)
 
 st.plotly_chart(f.fig_gains_lvg, use_container_width=True)
 i1, i2 = st.columns((1,1))
@@ -164,13 +178,13 @@ i2.plotly_chart(f.fig_arbitrum_lvg, use_container_width=True)
 
 st.markdown(f'#### Trader Profit and Loss [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/42de9e27-af83-4af3-ab82-dad0bc0d8d3c)', unsafe_allow_html=True)
 st.write(
-    """*The average percentage of profitable trades and the aggregated amount of profit and loss on the Gains network per day. 
+    """*The average percentage of profitable trades and the aggregated amount of profit and loss on gTrade per day. 
     The percentage of profitable trades is weighted by the number of close trades, rather than trading volume.* """)
 
 st.plotly_chart(f.fig_gains_pnl, use_container_width=True)
 k1, k2 = st.columns((1,1))
 k1.plotly_chart(f.fig_poly_pnl, use_container_width=True)
-k2.plotly_chart(f.fig_arbitrum_pnl, use_container_width=True, title = 'Arbitrum')
+k2.plotly_chart(f.fig_arbitrum_pnl, use_container_width=True)
 
 
 st.markdown(
@@ -178,7 +192,10 @@ st.markdown(
     ---
     # Competitor Key Statistics
     
-    This section shows the key statistics for Gains largest competitor GMX. 
+    This section shows the key statistics for Gains network's largest competitor GMX. GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading 
+    is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees and leverage trading.
+    
+    Similar to gTrade, the majority of trading volume comes from GMX's perpetual trading on Arbitrum. 
     
     """
 )
@@ -211,25 +228,37 @@ f2.plotly_chart(f.fig_gmx_fee_monthly, use_container_width=True)
 st.markdown(
     """
     ---
-    # A Comparison of Gains vs. GMX
+    # A Comparison of gTrade & GMX
 
-    The section below compares trader activity statistics of the Gains network and GMX.
+    This section compares trading activities on gTrade and GMX.
+    
+    While the total trading volume on gTrade is smaller than that on GMX, the volume gap between the two platforms is shrinking
+    rapidly since gTrade's Arbitrum deployment. In the second half of 2022, the trading volume on gTrade is roughly 15-20% of 
+    GMX trading volume. However, since the Arbitrum deployment, the trading volume on gTrade rises to around 50% of GMX trading volume.
+    Interestingly, the trading volume gap between gTrade and GMX started to increase in April 2022, with GMX's Arbitrum adoption. 
+    Prior to GMX's Arbitrum tradings, gTrade trading volume was more than 50% of GMX's trading volume.
+    With the trading fee on gTrade (0.08% for crypto) lower than that on GMX (0.1% for crypto), and benefits from Layer2 trading now
+    enabled, gTrade could potentially rival with GMX in the near future. 
+    
+    gTrade is a more institutional focused platform compared to GMX. With a minimum position size of 1,500 DAI, average 
+    position size on gTrade is much larger than average position size on GMX. We also isolated GMX's perpetual trading data on 
+    Arbitrum, and compared that to gTrade's Arbitrum trading data (as GMX data could be biased by spot trading). Similar conclusion is reached.
+    Traders on gTrade are also more active compared to traders on GMX. An average GMX trader executes 4-5 trades per day, while 
+    an average gTrade trader executes 6-8 trades per day in 2023. 
     
     """
 )
 
 st.markdown(f'#### Trading Volume and Fees [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005)', unsafe_allow_html=True)
 st.write(
-    """*Total derivative trading volume and trading fee on the Gains Network per day, compared to total 
-    trading volume and trading fee on the GMX per day.* """)
+    """*Total derivative trading volume and trading fee on the platform per day.* """)
 l1, l2 = st.columns((1,1))
 l1.plotly_chart(f.fig_comp_vol, use_container_width=True)
 l2.plotly_chart(f.fig_comp_fee, use_container_width=True)
 
 st.markdown(f'#### Total Number of Trades and Traders [{icons.setting_icon}](https://flipsidecrypto.xyz/edit/queries/3f52b4f5-28c8-4a43-bfe8-684169762005)', unsafe_allow_html=True)
 st.write(
-    """*Total number of trades and traders on the Gains Network per day, compared to total 
-    number of trades and traders on the GMX per day.* """)
+    """*Total number of trades and traders on the platform per day.* """)
 m1, m2 = st.columns((1,1))
 m1.plotly_chart(f.fig_comp_user, use_container_width=True)
 m2.plotly_chart(f.fig_comp_trades, use_container_width=True)
